@@ -33,6 +33,7 @@
 
 	<body>
 		<div class="reveal">
+
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section data-markdown>
@@ -65,6 +66,14 @@
 
 				</section>
 
+				<section data-markdown>
+					## Slide with math
+
+					\\(
+						\rho \left( \frac{\partial \boldsymbol{u}}{\partial t} + \boldsymbol{u} \cdot \nabla \boldsymbol{u} \right) =  - \nabla p + \nabla \cdot \boldsymbol{\sigma} + \*F,
+					\\)
+				</section>
+
 			</div>
 		</div>
 
@@ -89,8 +98,14 @@
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
+					{ src: 'plugin/notes/notes.js', async: true },
+			        { src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				}
 			});
 
 		</script>
