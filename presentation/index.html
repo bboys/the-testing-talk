@@ -37,16 +37,66 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section data-markdown>
-					# The Testing Talk
+					# Scientific Testing
 
 					By Sven Baars &amp; Mark Redeman
+				</section>
+				<section>
+					<section data-markdown>
+						# Example workflow
+
+						Building a generic $Ax = b$ solver
+					</section>
+
+					<section data-markdown>
+						__import_file__('../examples/backslash/try1/backslash.m')
+					</section>
+
+					<section data-markdown>
+						```
+							A = [1,1; 1,-1]; b = [1;2];
+							x = backslash(A, b);
+
+							norm(x - A \ b)
+						```
+					</section>
+
+					<section data-markdown>
+						```
+							A = rand(2); b = rand(2, 1);
+							x = backslash(A, b);
+
+							norm(x - A \ b)
+						```
+					</section>
+
+					<section data-markdown>
+						__import_file__('../examples/backslash/try2/backslash.m')
+					</section>
+
+
+					<section data-markdown>
+						```
+							A = [1,1; 1,-1]; b = [1;2];
+							x = backslash(A, b);
+
+							norm(x - A \ b)
+						```
+					</section>
+
+					<section data-markdown>
+						```
+							A = rand(2); b = rand(2, 1);
+							x = backslash(A, b);
+
+							norm(x - A \ b)
+						```
+					</section>
 				</section>
 
 				<section>
 					<section data-markdown>
-					## What is testing?
-
-					- That thing you do whenever you check your program is still working
+					# What is testing?
 					</section>
 
 					<section data-markdown>
@@ -72,13 +122,39 @@
 					</section>
 				</section>
 
-				<section data-markdown>
+				<section>
+					<section data-markdown>
+						# Example testing workflow
+					</section>
+
+					<section data-markdown>
+						__import_file__('../examples/backslash/try1/backslash_test.m')
+					</section>
+
+					<section data-markdown>
+						```
+							runtests(backslash_test)
+						```
+					</section>
+
+					<section data-markdown>
+						__import_file__('../examples/backslash/try1/backslash.m')
+					</section>
+
+					<section data-markdown>
+						```
+							runtests(backslash_test)
+						```
+					</section>
+				</section>
+
+				<!-- <section data-markdown>
 					# Pros &amp; cons
 
 					### Pros
 
 					### Cons
-				</section>
+				</section> -->
 
 				<section>
 					<section data-markdown>
@@ -89,26 +165,71 @@
 						- Acceptance tests
 					</section>
 
+					<!-- After some time -->
+
 					<section data-markdown>
 						### Unit Tests
 
-						voorbeeld
+						- Test a small part of the program
 					</section>
 
 					<section data-markdown>
 						### Integration Tests
 
-						voorbeeld
+
 					</section>
 
 					<section data-markdown>
 						### Acceptance Tests
 
-						voorbeeld
+
 					</section>
 				</section>
 
-				<section data-markdown>
+				<section>
+					<section data-markdown>
+						__import_file__('../examples/backslash/tryn/backslash.m')
+					</section>
+
+					<section data-markdown>
+						# Let's run our tests
+					</section>
+
+					<section data-markdown>
+						```
+						runtests(unit_tests);
+						```
+					</section>
+
+					<section data-markdown>
+						# Let's fix the bug
+					</section>
+
+					<section data-markdown>
+						```
+						runtests(unit_tests);
+						```
+					</section>
+
+					<section data-markdown>
+						```
+						runtests(integration_tests);
+						```
+					</section>
+
+					<section data-markdown>
+						# Let's fix the bug
+					</section>
+
+					<section data-markdown>
+						```
+						runtests(integration_tests);
+						```
+					</section>
+
+				</section>
+
+				<!--< section data-markdown>
 					## Why autonomous testing?
 
 					- Good tests document your code
@@ -124,16 +245,20 @@
 					- integration test
 					- acceptance tests
 
+				</section> -->
+				<section>
+					<section data-markdown>
+						# Continious integration
+					</section>
+
 				</section>
 
-				<section data-markdown>
-					## Slide with math
+				<section>
+					<section data-markdown>
+						# Mutation testing
+					</section>
 
-					\\(
-						\rho \left( \frac{\partial \boldsymbol{u}}{\partial t} + \boldsymbol{u} \cdot \nabla \boldsymbol{u} \right) =  - \nabla p + \nabla \cdot \boldsymbol{\sigma} + \*F,
-					\\)
 				</section>
-
 			</div>
 		</div>
 
