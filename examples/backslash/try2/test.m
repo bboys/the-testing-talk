@@ -1,2 +1,3 @@
 import matlab.unittest.TestSuite;
-run(TestSuite.fromFolder(pwd));
+
+run(TestSuite.fromFile('test_backslash.m'));

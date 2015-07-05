@@ -4,6 +4,6 @@ function x = backslash(A, b)
     % assertEqual([n, n], size(A), 'Wrong matrix dimensions');
 
     Ainv = [A(2,2), -A(1,2); -A(2,1), A(1,1)];
-    Ainv = 1 / (A(1, 1) * A(2, 2) - A(2, 1) * A(2, 1)) * Ainv;
+    Ainv = (1 / (A(1, 1) * A(2, 2) - A(2, 1) * A(1, 2))) * Ainv;
     x = Ainv * b;
 end
