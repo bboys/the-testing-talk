@@ -53,43 +53,48 @@
 					<section data-markdown="examples/backslash/try1/backslash.m"></section>
 
 					<section data-markdown>
-						```
-							>> A = [1, 1; 1, -1];
-							>> b = [1; 2];
-							>> x = backslash(A, b);
-							>> norm(x - A \ b)
-							ans =
-							     0
+						Test the function for a simple matrix
+
+						```matlab
+						>> A = [1, 1; 1, -1];
+						>> b = [1; 2];
+						>> x = backslash(A, b);
+						>> norm(x - A \ b)
+						ans =
+						     0
 						```
 					</section>
 
 					<section data-markdown>
-						```
-							A = rand(2); b = rand(2, 1);
-							x = backslash(A, b);
+						Test it for a small random matrix
 
-							norm(x - A \ b)
+						```matlab
+						>> rng('default');
+						>> A = rand(2); b = rand(2, 1);
+						>> x = backslash(A, b);
+						>> norm(x - A \ b)
+						ans =
+						     11.0235
 						```
 					</section>
 
 					<section data-markdown="examples/backslash/try2/backslash.m"></section>
 
-					<section data-markdown>
-						```
-							A = [1,1; 1,-1]; b = [1;2];
-							x = backslash(A, b);
-
-							norm(x - A \ b)
-						```
-					</section>
-
-					<section data-markdown>
-						```
-							A = rand(2); b = rand(2, 1);
-							x = backslash(A, b);
-
-							norm(x - A \ b)
-						```
+					<section>
+						<pre><code class="lang-matlab"
+>>> A = [1,1; 1,-1]; b = [1;2];
+>> x = backslash(A, b);
+>> norm(x - A \ b)
+ans =
+	0
+</code></pre>
+						<pre class="fragment"><code class="lang-matlab"
+>>> rng('default');
+>> A = rand(2); b = rand(2, 1);
+>> x = backslash(A, b);
+>> norm(x - A \ b)
+ans =
+	0</code></pre>
 					</section>
 				</section>
 
@@ -126,23 +131,58 @@
 						# Example testing workflow
 					</section>
 
-					<section data-markdown="examples/backslash/try1/test_backslash.m">
-
-					</section>
-
-					<section data-markdown>
-						```
-							runtests(backslash_test)
-						```
-					</section>
-
-					<section data-markdown="examples/backslash/try1/backslash.m">
-
-					</section>
+					<section data-markdown="examples/backslash/try1/backslash.m"></section>
+					<section data-markdown="examples/backslash/try1/test_backslash.m"></section>
 
 					<section data-markdown>
 						```
-							runtests(backslash_test)
+						>> runtests('backslash_test');
+						Running test_backslash
+						.
+						Done test_backslash
+						__________
+						```
+					</section>
+
+					<section data-markdown="examples/backslash/try2/test_backslash.m"></section>
+
+					<section data-markdown>
+						```
+						>> runtests('backslash_test');
+						Running test_backslash
+						.
+						================================================================================
+						Assertion failed in test_backslash/test_random_small_matrix.
+						The remainder of the test method will not run to completion.
+
+						    ---------------------
+						    Framework Diagnostic:
+						    ---------------------
+						    assertEqual failed.
+						    --> The values are not equal using "isequaln".
+
+						    Actual Value:
+						           1.323440755829690
+						           8.149844105732523
+						    Expected Value:
+						           0.157613081677548
+						           0.970592781760616
+
+						    ------------------
+						    Stack Information:
+						    ------------------
+						    In /backslash/try2/test_backslash.m (test_random_small_matrix) at 14
+						================================================================================
+						.
+						Done test_backslash
+						__________
+
+						Failure Summary:
+
+						     Name                                     Failed  Incomplete  Reason(s)
+						    ===================================================================================
+						     test_backslash/test_random_small_matrix    X         X       Failed by assertion.
+
 						```
 					</section>
 				</section>
