@@ -210,18 +210,34 @@ ans =
 						### Unit Tests
 
 						- Test a small part of the program
+						- Low level
+					</section>
+
+					<section data-markdown>
+						#### Example:
+						`backslash(A, b)`, with `A` a sparse spd matrix, should call `cg(A, b)`.
 					</section>
 
 					<section data-markdown>
 						### Integration Tests
 
+						- Test coupled systems
+					</section>
 
+					<section data-markdown>
+						#### Example:
+						- `backslash(A, b)` should return `x`.
 					</section>
 
 					<section data-markdown>
 						### Acceptance Tests
 
+						- Test user requirements
+					</section>
 
+					<section data-markdown>
+						#### Example:
+						- Solver should be able to run parallel on 16 cores
 					</section>
 				</section>
 
@@ -295,6 +311,12 @@ ans =
 				<section>
 					<section data-markdown>
 						# Mutation testing
+
+						Are your tests good enough?
+					</section>
+
+					<section data-markdown>
+						Idea: test should fail when we mutate our program
 					</section>
 
 				</section>
