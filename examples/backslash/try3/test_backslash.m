@@ -7,6 +7,7 @@ function test_small_matrix(t)
 end
 
 function test_random_small_matrix(t)
+    rng('default');
     A = rand(2);
     x = rand(2, 1);
     b = A * x;

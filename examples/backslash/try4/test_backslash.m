@@ -7,6 +7,7 @@ function test_small_matrix(t)
 end
 
 function test_random_small_matrix(t)
+    rng('default');
     A = rand(2);
     x = rand(2, 1);
     b = A * x;
@@ -16,7 +17,8 @@ function test_random_small_matrix(t)
 end
 
 function test_random_large_matrix(t)
-    n = 10;    
+    rng('default');
+    n = 10;
     A = rand(n);
     x = rand(n, 1);
     b = A * x;
