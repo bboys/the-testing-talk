@@ -26,7 +26,7 @@ function putText(text) {
 
 function typeLine(line) {
     for (var i = 0; i < line.length; i++) {
-        var text = line.charAt(i);
+        var text = line.charAt(i).replace(' ', '&nbsp;');
         addCall(putText, 100, text);
     }
 
@@ -39,7 +39,7 @@ function setStart() {
 
 function outputLines(lines) {
     for (var i = 0; i < lines.length; i++) {
-        var text = lines[i] + '<br/>';
+        var text = lines[i].replace(' ', '&nbsp;') + '<br/>';
         addCall(putText, 10, text);
     }
 }
@@ -54,17 +54,25 @@ function parseUrl() {
         return;
     }
 
+    var started = true;
     splurl = splurl[1].split("&");
     for (var i = 0; i < splurl.length; i++) {
         var pair = splurl[i].split("=");
         var type = pair[0];
+        var text = unescape(pair[1]);
         if (type === 'c') {
-            typeLine(pair[1]);
+            if (!started) {
+                setStart();
+            }
+            typeLine(text);
+            started = false;
         } else if (type === 'o') {
-            outputLines(pair[1].split('\\n'));
+            outputLines(text.split('\\n'));
             setStart();
+            started = true;
         } else if (type === 's') {
             setStart();
+            started = true;
         }
     }
 }

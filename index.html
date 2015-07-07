@@ -25,6 +25,51 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		<script>
+			function scriptToUrl(script) {
+			    var sscript = script.split('\t');
+			    var isOutput = true;
+			    var command = '';
+			    var request = './terminal/index.html?'
+			    for (var i = 0; i < sscript.length; i++) {
+				var line = sscript[i];
+				if (!line.length) {
+				    continue;
+				}
+
+				var newCommand = '';
+				console.log(line);
+				if (line.startsWith('>> ')) {
+				    isOutput = false;
+				    newCommand = '&c=';
+				    line = line.substring(3);
+				} else {
+				    isOutput = true;
+				    newCommand = '&o=';
+				}
+				if (command.length) {
+				    if (isOutput) {
+					command += '\\n';
+				    } else {
+					request += command;
+					command = newCommand;
+				    }
+				} else {
+				    command = newCommand;
+				}
+
+				command += escape(line);
+				if (!isOutput) {
+				    request += command;
+				    command = '';
+				} 
+			    }
+			    request += command;
+			    console.log(unescape(request));
+			    console.log(request);
+			    return request;
+			}
+		</script>
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -52,17 +97,15 @@
 
 					<section data-markdown="examples/backslash/try1/backslash.m"></section>
 
-					<section data-markdown>
+					<section>
 						Test the function for a simple matrix
 
-						```matlab
-						>> A = [1, 1; 1, -1];
-						>> b = [1; 2];
-						>> x = backslash(A, b);
-						>> norm(x - A \ b)
-						ans =
-						     0
-						```
+  <div><iframe data-src="" onload="this.onload=null; console.log(this);this.dataset['src']=scriptToUrl('			>> A = [1, 1; 1, -1];\
+						>> b = [1; 2];\
+						>> x = backslash(A, b);\
+						>> norm(x - A \ b)\
+						ans =\
+						     0')"></iframe></div>
 					</section>
 
 					<section data-markdown>
