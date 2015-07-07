@@ -74,13 +74,21 @@
 						>> x = backslash(A, b);
 						>> norm(x - A \ b)
 						ans =
-						     11.0235
+						     11.0235 % bug?
 						```
 					</section>
 
-					<section data-markdown="examples/backslash/try2/backslash.m"></section>
+					<!-- Show corrected backslash method for 2x2 matrices -->
+
+					<div data-markdown="examples/backslash/try2/backslash.m"></div>
+
+					<div data-markdown="examples/backslash/try3/backslash.m">
+						### Corrected backslash
+					</div>
+
 
 					<section>
+					<h4>It should still work for the small matrix</h4>
 						<pre><code class="lang-matlab"
 >>> A = [1,1; 1,-1]; b = [1;2];
 >> x = backslash(A, b);
@@ -88,13 +96,16 @@
 ans =
 	0
 </code></pre>
-						<pre class="fragment"><code class="lang-matlab"
+<div class="fragment">
+	<h4>It should also work for a random small matrix</h4>
+						<pre class=""><code class="lang-matlab"
 >>> rng('default');
 >> A = rand(2); b = rand(2, 1);
 >> x = backslash(A, b);
 >> norm(x - A \ b)
 ans =
 	0</code></pre>
+</div>
 					</section>
 				</section>
 
