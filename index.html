@@ -71,6 +71,13 @@
 			}
 		</script>
 
+		<style>
+		    iframe {
+			width: 12em;
+			height: 6em;
+		    }
+		</style>
+
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -100,25 +107,27 @@
 					<section>
 						Test the function for a simple matrix
 
-  <div><iframe data-src="" onload="this.onload=null; console.log(this);this.dataset['src']=scriptToUrl('			>> A = [1, 1; 1, -1];\
+<div><iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
+						>> A = [1, 1; 1, -1];\
 						>> b = [1; 2];\
 						>> x = backslash(A, b);\
 						>> norm(x - A \\ b)\
 						ans =\
-						     0')"></iframe></div>
+						        0\
+						')"></iframe></div>
 					</section>
 
-					<section data-markdown>
+					<section>
 						Test it for a small random matrix
 
-						```matlab
-						>> rng('default');
-						>> A = rand(2); b = rand(2, 1);
-						>> x = backslash(A, b);
-						>> norm(x - A \ b)
-						ans =
-						     11.0235 % bug?
-						```
+<div><iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
+						>> rng(\'default\');\
+						>> A = rand(2); b = rand(2, 1);\
+						>> x = backslash(A, b);\
+						>> norm(x - A \\ b)\
+						ans =\
+						        11.0235 % bug?\
+						')"></iframe></div>
 					</section>
 
 					<!-- Show corrected backslash method for 2x2 matrices -->
@@ -132,22 +141,23 @@
 
 					<section>
 					<h4>It should still work for the small matrix</h4>
-						<pre><code class="lang-matlab"
->>> A = [1,1; 1,-1]; b = [1;2];
->> x = backslash(A, b);
->> norm(x - A \ b)
-ans =
-	0
-</code></pre>
+<div><iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
+						>> A = [1,1; 1,-1]; b = [1;2];\
+						>> x = backslash(A, b);\
+						>> norm(x - A \\ b)\
+						ans =\
+						        0\
+						')"></iframe></div>
 <div class="fragment">
 	<h4>It should also work for a random small matrix</h4>
-						<pre class=""><code class="lang-matlab"
->>> rng('default');
->> A = rand(2); b = rand(2, 1);
->> x = backslash(A, b);
->> norm(x - A \ b)
-ans =
-	0</code></pre>
+<div><iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
+						>> rng(\'default\');\
+						>> A = rand(2); b = rand(2, 1);\
+						>> x = backslash(A, b);\
+						>> norm(x - A \\ b)\
+						ans =\
+						        0\
+						')"></iframe></div>
 </div>
 					</section>
 				</section>
