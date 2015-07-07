@@ -142,10 +142,15 @@ ans =
 						# Example testing workflow
 					</section>
 
-					<section data-markdown="examples/backslash/try1/backslash.m"></section>
-					<section data-markdown="examples/backslash/try1/test_backslash.m"></section>
+					<section data-markdown="examples/backslash/try1/backslash.m">
+						`backslash.m`
+					</section>
+					<section data-markdown="examples/backslash/try1/test_backslash.m">
+						`test_backslash.m`
+					</section>
 
-					<section data-markdown>
+					<section class="healthy-test" data-markdown>
+						Tests are healthy "Green"
 						```
 						>> runtests('backslash_test');
 						Running test_backslash
@@ -155,9 +160,21 @@ ans =
 						```
 					</section>
 
-					<section data-markdown="examples/backslash/try2/test_backslash.m"></section>
-
-					<section data-markdown>
+					<section data-markdown="examples/backslash/try2/test_backslash.m">
+						`test_backslash.m`
+					</section>
+					<style>
+					.healthy-test code {
+						border: solid 3px #00cc00 !important;
+						font-size: 75% !important;
+					}
+					.failing-test code {
+						border: solid 3px #cc0000 !important;
+						font-size: 75% !important;
+					}
+					</style>
+					<section class="failing-test" data-markdown>
+						Tests are failing "Red"
 						```
 						>> runtests('backslash_test');
 						Running test_backslash
@@ -194,6 +211,20 @@ ans =
 						    ===================================================================================
 						     test_backslash/test_random_small_matrix    X         X       Failed by assertion.
 
+						```
+					</section>
+
+					<section data-markdown="examples/backslash/try3/backslash.m">
+						Fix `backslash.m`
+					</section>
+
+					<section class="healthy-test" data-markdown>
+						```
+						>> runtests('backslash_test');
+						Running test_backslash
+						..
+						Done test_backslash
+						__________
 						```
 					</section>
 				</section>
