@@ -43,3 +43,28 @@ function outputLines(lines) {
         addCall(putText, 10, text);
     }
 }
+
+function parseUrl() {
+    setStart();
+
+    var url = $(location).attr('href');
+    var splurl = url.split("?");
+
+    if (splurl.length < 2) {
+        return;
+    }
+
+    splurl = splurl[1].split("&");
+    for (var i = 0; i < splurl.length; i++) {
+        var pair = splurl[i].split("=");
+        var type = pair[0];
+        if (type === 'c') {
+            typeLine(pair[1]);
+        } else if (type === 'o') {
+            outputLines(pair[1].split('\\n'));
+            setStart();
+        } else if (type === 's') {
+            setStart();
+        }
+    }
+}
