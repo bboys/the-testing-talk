@@ -38,7 +38,16 @@
     "grunt-autoprefixer": "~1.0.1",
     "grunt-zip": "~0.7.0",
     "grunt": "~0.4.0",
-    "node-sass": "~0.9.3"
+    "node-sass": "~0.9.3",
+    "gulp": "~3.8.6",
+    "gulp-browserify": "^0.5.0",
+    "browserify": "^4.1.11",
+    "gulp-uglify": "~0.3.1",
+    "gulp-rename": "~1.2.0",
+    "gulp-mocha": "1.0.0",
+    "should": "~4.0.4",
+    "gulp-util": "~3.0.5",
+    "sinon": "~1.15.3"
   },
   "licenses": [
     {
