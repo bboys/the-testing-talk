@@ -76,6 +76,14 @@
 			width: 12em;
 			height: 6em;
 			}
+			.healthy-test iframe {
+				border: solid 3px #00cc00 !important;
+				font-size: 75% !important;
+			}
+			.failing-test iframe {
+				border: solid 3px #cc0000 !important;
+				font-size: 75% !important;
+			}
 		</style>
 
 		<!--[if lt IE 9]>
@@ -214,30 +222,24 @@ ans =\n\
 						`test_backslash.m`
 					</section>
 
-					<section class="healthy-test" data-markdown>
+					<section class="healthy-test" >
 						Tests are healthy "Green"
-						```
-						>> runtests('backslash_test');
-						Running test_backslash
-						.
-						Done test_backslash
-						__________
-						```
+						<div>
+							<iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
+>> runtests(\'backslash_test\');\n\
+Running test_backslash\n\
+.\n\
+Done test_backslash\n\
+__________\n\
+')">
+							</iframe>
+						</div>
 					</section>
 
 					<section data-markdown="examples/backslash/try2/test_backslash.m">
 						`test_backslash.m`
 					</section>
-					<style>
-					.healthy-test code {
-						border: solid 3px #00cc00 !important;
-						font-size: 75% !important;
-					}
-					.failing-test code {
-						border: solid 3px #cc0000 !important;
-						font-size: 75% !important;
-					}
-					</style>
+
 					<section class="failing-test" data-markdown>
 						Tests are failing "Red"
 						```
