@@ -27,55 +27,55 @@
 		</script>
 		<script>
 			function scriptToUrl(script) {
-			    var sscript = script.split('\t');
-			    var isOutput = true;
-			    var command = '';
-			    var request = './terminal/index.html?'
-			    for (var i = 0; i < sscript.length; i++) {
+				var sscript = script.split('\t');
+				var isOutput = true;
+				var command = '';
+				var request = './terminal/index.html?'
+				for (var i = 0; i < sscript.length; i++) {
 				var line = sscript[i];
 				if (!line.length) {
-				    continue;
+					continue;
 				}
 
 				var newCommand = '';
 				console.log(line);
 				if (line.startsWith('>> ')) {
-				    isOutput = false;
-				    newCommand = '&c=';
-				    line = line.substring(3);
+					isOutput = false;
+					newCommand = '&c=';
+					line = line.substring(3);
 				} else {
-				    isOutput = true;
-				    newCommand = '&o=';
+					isOutput = true;
+					newCommand = '&o=';
 				}
 				if (command.length) {
-				    if (isOutput) {
+					if (isOutput) {
 					command += '\\n';
-				    } else {
+					} else {
 					request += command;
 					command = newCommand;
-				    }
+					}
 				} else {
-				    command = newCommand;
+					command = newCommand;
 				}
 
 				command += escape(line);
 				if (!isOutput) {
-				    request += command;
-				    command = '';
+					request += command;
+					command = '';
 				}
-			    }
-			    request += command;
-			    console.log(unescape(request));
-			    console.log(request);
-			    return request;
+				}
+				request += command;
+				console.log(unescape(request));
+				console.log(request);
+				return request;
 			}
 		</script>
 
 		<style>
-		    iframe {
+			iframe {
 			width: 12em;
 			height: 6em;
-		    }
+			}
 		</style>
 
 		<!--[if lt IE 9]>
@@ -107,14 +107,17 @@
 					<section>
 						Test the function for a simple matrix
 
-<div><iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
-						>> A = [1, 1; 1, -1];\
-						>> b = [1; 2];\
-						>> x = backslash(A, b);\
-						>> norm(x - A \\ b)\
-						ans =\
-						        0\
-						')"></iframe></div>
+						<div>
+							<iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
+							>> A = [1, 1; 1, -1];\
+							>> b = [1; 2];\
+							>> x = backslash(A, b);\
+							>> norm(x - A \\ b)\
+							ans =\
+									0\
+							')">
+							</iframe>
+						</div>
 					</section>
 
 					<section>
@@ -126,7 +129,7 @@
 						>> x = backslash(A, b);\
 						>> norm(x - A \\ b)\
 						ans =\
-						        11.0235 % bug?\
+								11.0235 % bug?\
 						')"></iframe></div>
 					</section>
 
@@ -140,25 +143,31 @@
 
 
 					<section>
-					<h4>It should still work for the small matrix</h4>
-<div><iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
-						>> A = [1,1; 1,-1]; b = [1;2];\
-						>> x = backslash(A, b);\
-						>> norm(x - A \\ b)\
-						ans =\
-						        0\
-						')"></iframe></div>
-<div class="fragment">
-	<h4>It should also work for a random small matrix</h4>
-<div><iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
-						>> rng(\'default\');\
-						>> A = rand(2); b = rand(2, 1);\
-						>> x = backslash(A, b);\
-						>> norm(x - A \\ b)\
-						ans =\
-						        0\
-						')"></iframe></div>
-</div>
+						<h4>It should still work for the small matrix</h4>
+						<div>
+							<iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
+								>> A = [1,1; 1,-1]; b = [1;2];\
+								>> x = backslash(A, b);\
+								>> norm(x - A \\ b)\
+								ans =\
+										0\
+								')">
+							</iframe>
+						</div>
+						<div class="fragment">
+							<h4>It should also work for a random small matrix</h4>
+							<div>
+								<iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
+								>> rng(\'default\');\
+								>> A = rand(2); b = rand(2, 1);\
+								>> x = backslash(A, b);\
+								>> norm(x - A \\ b)\
+								ans =\
+										0\
+								')">
+								</iframe>
+							</div>
+						</div>
 					</section>
 				</section>
 
@@ -236,23 +245,23 @@
 						Assertion failed in test_backslash/test_random_small_matrix.
 						The remainder of the test method will not run to completion.
 
-						    ---------------------
-						    Framework Diagnostic:
-						    ---------------------
-						    assertEqual failed.
-						    --> The values are not equal using "isequaln".
+							---------------------
+							Framework Diagnostic:
+							---------------------
+							assertEqual failed.
+							--> The values are not equal using "isequaln".
 
-						    Actual Value:
-						           1.323440755829690
-						           8.149844105732523
-						    Expected Value:
-						           0.157613081677548
-						           0.970592781760616
+							Actual Value:
+								   1.323440755829690
+								   8.149844105732523
+							Expected Value:
+								   0.157613081677548
+								   0.970592781760616
 
-						    ------------------
-						    Stack Information:
-						    ------------------
-						    In /backslash/try2/test_backslash.m (test_random_small_matrix) at 14
+							------------------
+							Stack Information:
+							------------------
+							In /backslash/try2/test_backslash.m (test_random_small_matrix) at 14
 						================================================================================
 						.
 						Done test_backslash
@@ -260,9 +269,9 @@
 
 						Failure Summary:
 
-						     Name                                     Failed  Incomplete  Reason(s)
-						    ===================================================================================
-						     test_backslash/test_random_small_matrix    X         X       Failed by assertion.
+							 Name                                     Failed  Incomplete  Reason(s)
+							===================================================================================
+							 test_backslash/test_random_small_matrix    X         X       Failed by assertion.
 
 						```
 					</section>
@@ -482,7 +491,7 @@
 					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true },
 					{ src: 'plugin/notes/notes.js', async: true },
-			        { src: 'plugin/math/math.js', async: true }
+					{ src: 'plugin/math/math.js', async: true }
 				],
 
 				math: {
