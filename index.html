@@ -78,11 +78,9 @@
 			}
 			.healthy-test iframe {
 				border: solid 3px #00cc00 !important;
-				font-size: 75% !important;
 			}
 			.failing-test iframe {
 				border: solid 3px #cc0000 !important;
-				font-size: 75% !important;
 			}
 		</style>
 
@@ -240,59 +238,66 @@ __________\n\
 						`test_backslash.m`
 					</section>
 
-					<section class="failing-test" data-markdown>
-						Tests are failing "Red"
-						```
-						>> runtests('backslash_test');
-						Running test_backslash
-						.
-						================================================================================
-						Assertion failed in test_backslash/test_random_small_matrix.
-						The remainder of the test method will not run to completion.
-
-							---------------------
-							Framework Diagnostic:
-							---------------------
-							assertEqual failed.
-							--> The values are not equal using "isequaln".
-
-							Actual Value:
-								   1.323440755829690
-								   8.149844105732523
-							Expected Value:
-								   0.157613081677548
-								   0.970592781760616
-
-							------------------
-							Stack Information:
-							------------------
-							In /backslash/try2/test_backslash.m (test_random_small_matrix) at 14
-						================================================================================
-						.
-						Done test_backslash
-						__________
-
-						Failure Summary:
-
-							 Name                                     Failed  Incomplete  Reason(s)
-							===================================================================================
-							 test_backslash/test_random_small_matrix    X         X       Failed by assertion.
-
-						```
+					<section class="failing-test">
+					Tests are failing "Red"
+					<div>
+							<iframe style="width: 25em; height: 15em;" data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
+>> runtests(\'backslash_test\');\n\
+Running test_backslash\n\
+.\n\
+================================================================================\n\
+Assertion failed in test_backslash/test_random_small_matrix.\n\
+The remainder of the test method will not run to completion.\n\
+\n\
+	---------------------\n\
+	Framework Diagnostic:\n\
+	---------------------\n\
+	assertEqual failed.\n\
+	--> The values are not equal using &quot;isequaln&quot;.\n\
+\n\
+	Actual Value:\n\
+		   1.323440755829690\n\
+		   8.149844105732523\n\
+	Expected Value:\n\
+		   0.157613081677548\n\
+		   0.970592781760616\n\
+\n\
+	------------------\n\
+	Stack Information:\n\
+	------------------\n\
+	In test_backslash.m (test_random_small_matrix) at 14\n\
+================================================================================\n\
+.\n\
+Done test_backslash\n\
+__________\n\
+\n\
+Failure Summary:\n\
+\n\
+	 Name                                     Failed  Incomplete  Reason(s)\n\
+	===================================================================================\n\
+	 test_backslash/test_random_small_matrix    X         X       Failed by assertion.\n\
+')">
+							</iframe>
+						</div>
 					</section>
 
 					<section data-markdown="examples/backslash/try3/backslash.m">
 						Fix `backslash.m`
 					</section>
 
-					<section class="healthy-test" data-markdown>
-						```
-						>> runtests('backslash_test');
-						Running test_backslash
-						..
-						Done test_backslash
-						__________
-						```
+
+					<section class="healthy-test" >
+						Tests are healthy "Green"
+						<div>
+							<iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
+>> runtests(\'backslash_test\');\n\
+Running test_backslash\n\
+.\n\
+Done test_backslash\n\
+__________\n\
+')">
+							</iframe>
+						</div>
 					</section>
 				</section>
 
@@ -304,19 +309,13 @@ __________\n\
 					### Cons
 				</section> -->
 
+				<section data-markdown>
+					## Different types of tests
+				</section>
+
 				<section>
 					<section data-markdown>
-						## Different types of tests
-
-						- Unit tests
-						- Integration tests
-						- Acceptance tests
-					</section>
-
-					<!-- After some time -->
-
-					<section data-markdown>
-						### Unit Tests
+						### Unit tests
 
 						- Test a small part of the program
 						- Low level
@@ -326,20 +325,22 @@ __________\n\
 						#### Example:
 						`backslash(A, b)`, with `A` a sparse spd matrix, should call `cg(A, b)`.
 					</section>
+				</section>
 
+				<section>
 					<section data-markdown>
-						### Integration Tests
-
-						- Test coupled systems
+						### Integration tests- Test coupled systems
 					</section>
 
 					<section data-markdown>
 						#### Example:
 						- `backslash(A, b)` should return `x`.
 					</section>
+				</section>
 
+				<section>
 					<section data-markdown>
-						### Acceptance Tests
+						### Acceptance tests
 
 						- Test user requirements
 					</section>
@@ -351,9 +352,7 @@ __________\n\
 				</section>
 
 				<section>
-					<section data-markdown="examples/backslash/tryn/backslash.m">
-
-					</section>
+					<section data-markdown="examples/backslash/tryn/backslash.m"></section>
 
 					<section data-markdown>
 						# Let's run our tests
@@ -485,7 +484,7 @@ __________\n\
 				progress: true,
 				history: true,
 				center: true,
-
+				slideNumber: 'c / t',
 				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
 				// Optional reveal.js plugins
