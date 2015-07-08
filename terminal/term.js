@@ -39,7 +39,9 @@ function setStart() {
 
 function outputLines(lines) {
     for (var i = 0; i < lines.length; i++) {
-        var text = lines[i].replace(new RegExp(' ', 'g'), '&nbsp;') + '<br/>';
+        var text = lines[i].replace(new RegExp(' ', 'g'), '&nbsp;');
+        text = text.replace(new RegExp('\t', 'g'), '&nbsp;&nbsp;&nbsp;&nbsp;');
+        text += '<br/>';
         addCall(putText, 10, text);
     }
 }

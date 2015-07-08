@@ -27,13 +27,13 @@
 		</script>
 		<script>
 			function scriptToUrl(script) {
-				var sscript = script.split('\t');
+				var sscript = script.split('\n');
 				var isOutput = true;
 				var command = '';
 				var request = './terminal/index.html?'
 				for (var i = 0; i < sscript.length; i++) {
 				var line = sscript[i];
-				if (!line.length) {
+				if (!line.trim().length) {
 					continue;
 				}
 
@@ -108,13 +108,13 @@
 						Test the function for a simple matrix
 
 						<div>
-							<iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
-							>> A = [1, 1; 1, -1];\
-							>> b = [1; 2];\
-							>> x = backslash(A, b);\
-							>> norm(x - A \\ b)\
-							ans =\
-									0\
+							<iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\n\
+>> A = [1, 1; 1, -1];\n\
+>> b = [1; 2];\n\
+>> x = backslash(A, b);\n\
+>> norm(x - A \\ b)\n\
+ans =\n\
+		0\n\
 							')">
 							</iframe>
 						</div>
@@ -123,14 +123,17 @@
 					<section>
 						Test it for a small random matrix
 
-<div><iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
-						>> rng(\'default\');\
-						>> A = rand(2); b = rand(2, 1);\
-						>> x = backslash(A, b);\
-						>> norm(x - A \\ b)\
-						ans =\
-								11.0235 % bug?\
-						')"></iframe></div>
+						<div>
+							<iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\n\
+>> rng(\'default\');\n\
+>> A = rand(2); b = rand(2, 1);\n\
+>> x = backslash(A, b);\n\
+>> norm(x - A \\ b)\n\
+ans =\n\
+		11.0235 % bug?\n\
+							')">
+							</iframe>
+						</div>
 					</section>
 
 					<!-- Show corrected backslash method for 2x2 matrices -->
@@ -145,25 +148,25 @@
 					<section>
 						<h4>It should still work for the small matrix</h4>
 						<div>
-							<iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
-								>> A = [1,1; 1,-1]; b = [1;2];\
-								>> x = backslash(A, b);\
-								>> norm(x - A \\ b)\
-								ans =\
-										0\
+							<iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\n\
+>> A = [1,1; 1,-1]; b = [1;2];\n\
+>> x = backslash(A, b);\n\
+>> norm(x - A \\ b)\n\
+ans =\n\
+		0\n\
 								')">
 							</iframe>
 						</div>
 						<div class="fragment">
 							<h4>It should also work for a random small matrix</h4>
 							<div>
-								<iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
-								>> rng(\'default\');\
-								>> A = rand(2); b = rand(2, 1);\
-								>> x = backslash(A, b);\
-								>> norm(x - A \\ b)\
-								ans =\
-										0\
+								<iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\n\
+>> rng(\'default\');\n\
+>> A = rand(2); b = rand(2, 1);\n\
+>> x = backslash(A, b);\n\
+>> norm(x - A \\ b)\n\
+ans =\n\
+		0\n\
 								')">
 								</iframe>
 							</div>
