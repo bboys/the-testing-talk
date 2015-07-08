@@ -186,17 +186,19 @@ ans =\n\
 					</section>
 
 					<section data-markdown>
-					## What usually happens
+					## Manual testing
 
 					- Write some code
 					- Run your program with some different parameters and/or matrices
+					- Check if program produces correct results
 					- Run it in parallel for one test problem?
 					- Run it with valgrind for one test problem?
 					</section>
 
 					<section data-markdown>
-					## Now
+					## Automated testing
 
+					- Write functions that test your code for you
 					- Does it work for any combination of parameters/any matrix?
 					- Does it work with any number of processors?
 					</section>
@@ -224,7 +226,7 @@ ans =\n\
 						Tests are healthy "Green"
 						<div>
 							<iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
->> runtests(\'backslash_test\');\n\
+>> test\n\
 Running test_backslash\n\
 .\n\
 Done test_backslash\n\
@@ -242,7 +244,7 @@ __________\n\
 					Tests are failing "Red"
 					<div>
 							<iframe style="width: 25em; height: 16em;" data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
->> runtests(\'backslash_test\');\n\
+>> test\n\
 Running test_backslash\n\
 .\n\
 ================================================================================\n\
@@ -290,7 +292,7 @@ Failure Summary:\n\
 						Tests are healthy "Green"
 						<div>
 							<iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
->> runtests(\'backslash_test\');\n\
+>> test\n\
 Running test_backslash\n\
 .\n\
 Done test_backslash\n\
@@ -310,7 +312,7 @@ __________\n\
 				</section> -->
 
 				<section data-markdown>
-					## Different types of tests
+					# Different types of tests
 				</section>
 
 				<section>
@@ -322,11 +324,8 @@ __________\n\
 						- Should be fast
 					</section>
 
-					<section data-markdown>
+					<section data-markdown="examples/backslash/try3/test_backslash.m">
 						#### Example:
-						```
-
-						```
 					</section>
 				</section>
 
@@ -340,11 +339,7 @@ __________\n\
 					</section>
 
 					<section data-markdown>
-						#### Example:
-
-						```
-
-						```
+						#### No example
 					</section>
 				</section>
 
@@ -358,11 +353,94 @@ __________\n\
 
 					<section data-markdown>
 						#### Example:
-
-						```
-
-						```
+						`backslash` should be fast
 					</section>
+
+					<section data-markdown="examples/backslash/try5/backslash.m"></section>
+
+					<section class="healthy-test" >
+						<div>
+							<iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
+>> test\n\
+Running test_backslash\n\
+.\n\
+Done test_backslash\n\
+__________\n\
+')">
+							</iframe>
+						</div>
+					</section>
+
+					<section data-markdown="examples/backslash/try5/test_accept_backslash.m"></section>
+
+					<section class="failing-test">
+					<div>
+							<iframe style="width: 25em; height: 16em;" data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
+test\n\
+Running test_backslash\n\
+...\n\
+Done test_backslash\n\
+__________\n\
+\n\
+Running test_accept_backslash\n\
+\n\
+================================================================================\n\
+Assertion failed in test_accept_backslash/test_sparse_matrix.\n\
+The remainder of the test method will not run to completion.\n\
+\n\
+    ---------------------\n\
+    Framework Diagnostic:\n\
+    ---------------------\n\
+    assertLessThan failed.\n\
+    --> The value must be less than the maximum value.\n\
+    \n\
+    Actual Value:\n\
+           3.323814000000000\n\
+    Maximum Value (Exclusive):\n\
+             1\n\
+\n\
+    ------------------\n\
+    Stack Information:\n\
+    ------------------\n\
+    In /home/mark/Projects/talks/testing/examples/backslash/try5/test_accept_backslash.m (test_sparse_matrix) at 21\n\
+================================================================================\n\
+.\n\
+Done test_accept_backslash\n\
+__________\n\
+\n\
+Failure Summary:\n\
+\n\
+     Name                                      Failed  Incomplete  Reason(s)\n\
+    ====================================================================================\n\
+     test_accept_backslash/test_sparse_matrix    X         X       Failed by assertion.\n\
+')">
+							</iframe>
+						</div>
+					</section>
+
+					<section data-markdown="examples/backslash/try6/backslash.m">
+						`backslash.m`
+					</section>
+
+					<section class="healthy-test" >
+						<div>
+							<iframe data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
+>> test\n\
+Running test_backslash\n\
+...\n\
+Done test_backslash\n\
+__________\n\
+\n\
+Running test_accept_backslash\n\
+.\n\
+Done test_accept_backslash\n\
+__________\n\
+\n\
+')">
+							</iframe>
+						</div>
+					</section>
+
 				</section>
 
 				<section>
@@ -371,7 +449,15 @@ __________\n\
 					</section>
 
 					<section data-markdown>
-						Run tests automatically (and mandatory)
+						### Version control
+						* Run tests automatically (and mandatory) on each commit
+						* Commits should not be merged into master if tests fail
+						* Commits ____CAN____ not be merged into master if tests fail
+					</section>
+
+					<section data-markdown>
+						### Continiuous integration services
+						![Jenkins](img/jenkins.png "Jenkins")
 					</section>
 
 				</section>

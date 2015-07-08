@@ -12,8 +12,7 @@ function test_random_small_matrix(t)
     x = rand(2, 1);
     b = A * x;
 
-    tol = 1E-10;
-    t.assertLessThan(norm(backslash(A, b) - x), tol);
+    t.assertLessThan(norm(backslash(A, b) - x), 1E-10);
 end
 
 function test_random_large_matrix(t)
@@ -23,26 +22,5 @@ function test_random_large_matrix(t)
     x = rand(n, 1);
     b = A * x;
 
-    tol = 1E-10;
-    t.assertLessThan(norm(backslash(A, b) - x), tol);
-end
-
-function test_sparse_matrix(t)
-    m = 200;
-    G = numgrid('S', m);
-    A = delsq(G);
-    n = size(A,1);
-
-    xex = rand(n, 1);
-    b = A * xex;
-
-    tic;
-    x = backslash(A, b);
-    tm = toc;
-
-    tol = 1E-10;
-    t.assertLessThan(norm(xex - x), tol);
-
-    t.assertLessThan(tm, 1);
-    
+    t.assertLessThan(norm(backslash(A, b) - x), 1E-10);
 end

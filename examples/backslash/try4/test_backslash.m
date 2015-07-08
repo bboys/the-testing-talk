@@ -12,8 +12,7 @@ function test_random_small_matrix(t)
     x = rand(2, 1);
     b = A * x;
 
-    tol = 1E-10;
-    t.assertLessThan(norm(backslash(A, b) - x), tol);
+    t.assertLessThan(norm(backslash(A, b) - x), 1E-10);
 end
 
 function test_random_large_matrix(t)
@@ -23,7 +22,6 @@ function test_random_large_matrix(t)
     x = rand(n, 1);
     b = A * x;
 
-    tol = 1E-10;
-    t.assertLessThan(norm(backslash(A, b) - x), tol);
+    t.assertLessThan(norm(backslash(A, b) - x), 1E-10);
 end
 

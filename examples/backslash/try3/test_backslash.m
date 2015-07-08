@@ -12,6 +12,5 @@ function test_random_small_matrix(t)
     x = rand(2, 1);
     b = A * x;
 
-    tol = 1E-10;
-    t.assertLessThan(norm(backslash(A, b) - x), tol);
+    t.assertLessThan(norm(backslash(A, b) - x), 1E-10);
 end

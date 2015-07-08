@@ -3,3 +3,9 @@ function x = backslash(A, b)
     Ainv = (1 / (A(1, 1) * A(2, 2) - A(2, 1) * A(1, 2))) * Ainv;
     x = Ainv * b;
 end
+
+function x = old_backslash(A, b)
+    Ainv = [A(2,2), -A(1,2); -A(2,1), A(1,1)];
+    Ainv = 1 / (A(1, 1) * A(2, 2) - A(2, 1) * A(2, 1)) * Ainv;
+    x = Ainv * b;
+end
