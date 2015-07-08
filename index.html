@@ -241,7 +241,7 @@ __________\n\
 					<section class="failing-test">
 					Tests are failing "Red"
 					<div>
-							<iframe style="width: 25em; height: 15em;" data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
+							<iframe style="width: 25em; height: 16em;" data-src="" onload="this.onload=null;this.dataset['src']=scriptToUrl('\
 >> runtests(\'backslash_test\');\n\
 Running test_backslash\n\
 .\n\
@@ -319,22 +319,32 @@ __________\n\
 
 						- Test a small part of the program
 						- Low level
+						- Should be fast
 					</section>
 
 					<section data-markdown>
 						#### Example:
-						`backslash(A, b)`, with `A` a sparse spd matrix, should call `cg(A, b)`.
+						```
+
+						```
 					</section>
 				</section>
 
 				<section>
 					<section data-markdown>
-						### Integration tests- Test coupled systems
+						### Integration tests
+
+						- Test coupled systems
+						- Compare output with experimental data
+						- Check conservation laws
 					</section>
 
 					<section data-markdown>
 						#### Example:
-						- `backslash(A, b)` should return `x`.
+
+						```
+
+						```
 					</section>
 				</section>
 
@@ -343,75 +353,25 @@ __________\n\
 						### Acceptance tests
 
 						- Test user requirements
+						- The program should still work on multiple processors
 					</section>
 
 					<section data-markdown>
 						#### Example:
-						- Solver should be able to run parallel on 16 cores
+
+						```
+
+						```
 					</section>
 				</section>
 
-				<section>
-					<section data-markdown="examples/backslash/tryn/backslash.m"></section>
-
-					<section data-markdown>
-						# Let's run our tests
-					</section>
-
-					<section data-markdown>
-						```
-						runtests(unit_tests);
-						```
-					</section>
-
-					<section data-markdown>
-						# Let's fix the bug
-					</section>
-
-					<section data-markdown>
-						```
-						runtests(unit_tests);
-						```
-					</section>
-
-					<section data-markdown>
-						```
-						runtests(integration_tests);
-						```
-					</section>
-
-					<section data-markdown>
-						# Let's fix the bug
-					</section>
-
-					<section data-markdown>
-						```
-						runtests(integration_tests);
-						```
-					</section>
-
-				</section>
-
-				<!--< section data-markdown>
-					## Why autonomous testing?
-
-					- Good tests document your code
-					- Reproducible results
-					- Easier to find bugs
-
-				</section>
-
-				<section data-markdown>
-					## Some testing jargon
-
-					- unit test
-					- integration test
-					- acceptance tests
-
-				</section> -->
 				<section>
 					<section data-markdown>
 						# Continuous integration
+					</section>
+
+					<section data-markdown>
+						Run tests automatically (and mandatory)
 					</section>
 
 				</section>
@@ -445,7 +405,7 @@ __________\n\
 						- Even when working alone
 						- Use one coding style
 						- Write it so someone else can read and run your code the next day
-						- This includes writing documentation
+						- This includes writing documentation (hint: tests can be used as documentaion)
 					</section>
 
 					<section data-markdown>
