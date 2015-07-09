@@ -12,10 +12,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/solarized	.css" id="theme">
 
 		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="lib/css/tomorrow.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -49,7 +49,7 @@
 				}
 				if (command.length) {
 					if (isOutput) {
-					command += '\\n';
+					command += escape('\\n');
 					} else {
 					request += command;
 					command = newCommand;
@@ -77,20 +77,24 @@
 			height: 6em;
 			}
 			.healthy-test iframe {
-				border: solid 3px #00cc00 !important;
+				border: solid 5px #00cc00 !important;
 			}
 			.failing-test iframe {
-				border: solid 3px #cc0000 !important;
+				border: solid 5px #cc0000 !important;
 			}
 
 			.reveal h6 {
     font-weight: normal;
-    font-size: 35%;
-    margin-top:-3em;
+    font-size: 45%;
+    margin-top:-2em;
     text-transform: none;
 	}
 
 	.reveal section img[alt=GLaDOS] { background:none; border:none; box-shadow:none; width:30%;}
+	.reveal section img {
+	max-height: 350px;}
+	.hljs {
+	background: #fff !important; color: #4D4D4C !important;}
 		</style>
 
 		<!--[if lt IE 9]>
@@ -484,7 +488,7 @@ __________\n\
 
 					</style>
 					<section>
-						<h3>Continiuous integration services</h3>
+						<h3>Continuous integration services</h3>
 
 						<ul class='ci-list'>
 							<li>
@@ -643,7 +647,7 @@ __________\n\
 					</section>
 
 					<section data-markdown>
-						### Disadvatages
+						### Disadvantages
 
 						* Automated mutation tests are slow
 						* `odeRK4` generated 424 mutations
@@ -692,7 +696,7 @@ __________\n\
 						- Even when working alone
 						- Use one coding style
 						- Write it so someone else can read and run your code the next day
-						- This includes writing documentation (hint: tests can be used as documentaion)
+						- This includes writing documentation
 
 						![Code Quality](img/code_quality.png "Code Quality")
 						###### https://xkcd.com/1513/
