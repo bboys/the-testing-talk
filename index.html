@@ -186,9 +186,8 @@ ans =\n\
 					<section data-markdown>
 					## Manual testing
 
-					- Write some code
-					- Run your program with some different parameters and/or matrices
-					- Check if program produces correct results
+					- Write __some__ code
+					- Run your program with __some__ different parameters and/or matrices
 					- Run it in parallel for one test problem?
 					- Run it with valgrind for one test problem?
 					</section>
@@ -196,15 +195,22 @@ ans =\n\
 					<section data-markdown>
 					## Automated testing
 
-					- Write functions that test your code for you
-					- Does it work for any combination of parameters/any matrix?
-					- Does it work with any number of processors?
+					- Write functions that execute your code
+					- Keep track of functions that do not produce correct results
+					- Does it work for __any__ combination of parameters/__any__ matrix?
+					- Does it work with __any__ number of processors?
 					</section>
 
 					<section data-markdown>
-					## Idea behind automated testing
+					## Advantages of automated testing
 
-					- Once your program works, it should never break for previous test cases
+					- Write a test __once__ and execute it __many__ times
+					- Get free documentation
+					- Instant feedback
+					</section>
+
+					<section>
+						Once your program works, it should never break for previous test cases
 					</section>
 				</section>
 
@@ -453,9 +459,38 @@ __________\n\
 						* Commits ____CAN____ not be merged into master if tests fail
 					</section>
 
-					<section data-markdown>
-						### Continiuous integration services
-						![Jenkins](img/jenkins.png "Jenkins")
+					<style>
+					.ci-list {
+						list-style: none !important;
+					}
+					.ci-list li {
+						float: left;
+						margin-left: .5em;
+						margin-right: .5em;
+						text-align: center;
+					}
+					.ci-list img {
+						max-width: 200px;
+					}
+
+					</style>
+					<section>
+						<h3>Continiuous integration services</h3>
+
+						<ul class='ci-list'>
+							<li>
+								<h4>Jenkins</h4>
+								<img src="img/jenkins.png" alt="Jenkins" />
+							</li>
+							<li>
+							<h4>Buildbot</h4>
+								<img src="img/buildbot.png" alt="Buildbot" />
+							</li>
+							<li>
+							<h4>Strider</h4>
+								<img src="img/strider.png" alt="Strider" />
+							</li>
+						</ul>
 					</section>
 
 				</section>
