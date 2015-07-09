@@ -518,9 +518,8 @@ __________\n\
 						t = (0:h:tn);      %  Column vector of elements with spacing h
 						n = length(t);     %  Number of elements in the t vector
 						y = y0*ones(n,1);  %  Preallocate y for speed
-						h2 = h/2;
-						h3 = h/3;
-						h6 = h/6;  %  Avoid repeated evaluation of constants
+						%  Avoid repeated evaluation of constants
+						h2 = h/2; h3 = h/3; h6 = h/6;
 
 						%  Begin RK4 integration; j=1 for initial condition
 						for j=2:n
@@ -540,9 +539,8 @@ __________\n\
 						t = (0:h:tn);      %  Column vector of elements with spacing h
 						n = length(t);     %  Number of elements in the t vector
 						y = y0*ones(n,1);  %  Preallocate y for speed
-						h2 = h/2;
-						h3 = h/3;
-						h6 = h/6;  %  Avoid repeated evaluation of constants
+						%  Avoid repeated evaluation of constants
+						h2 = h/2; h3 = h/3; h6 = h/6;
 
 						%  Begin RK4 integration; j=1 for initial condition
 						for j=2:n
@@ -551,14 +549,128 @@ __________\n\
 						   k3 = feval(diffeq, t(j-1)+h2, y(j-1)+h2*k2  );
 						   k4 = feval(diffeq, t(j-1)+h,  y(j-1)+h*k3   );
 						   y(j) = y(j-1) - h6*(k1+k4) + h3*(k2+k3);
+						   %             ^ Changed + to -
 						end
 						```
 					</section>
 
 					<section data-markdown>
-						#### Mutated tests should fail when run on mutated
+						#### Tests should fail when run on mutated code
 					</section>
 
+					<section data-markdown>
+						### Automated mutation testing
+						Use a tool that generates mutations and runs tests
+					</section>
+
+					<section data-markdown>
+						### Mutation operators
+
+						- Math Mutator
+						- Negate Conditionals Mutator
+						- Conditionals Boundary Mutator
+						- Remove Conditionals Mutator
+						- Increments Mutator
+						- Invert Negatives Mutator
+						- Return Values Mutator
+					</section>
+
+					<section data-markdown>
+						#### Math Mutator
+						| Original conditional | Mutated conditional |
+						|----------------------|---------------------|
+						| +                    | -                   |
+						| -                    | +                   |
+						| *                    | /                   |
+						| /                    | *                   |
+						| %                    | *                   |
+						| <<                   | >>                  |
+						| >>                   | <<                  |
+						| >>>                  | <<                  |
+					</section>
+
+					<section data-markdown>
+						#### Negate Conditionals Mutator
+
+						| Original conditional | Mutated conditional |
+						|----------------------|---------------------|
+						| ==                   | !=                  |
+						| !=                   | ==                  |
+						| <=                   | >                   |
+						| >=                   | <                   |
+						| <                    | >=                  |
+						| >                    | <=                  |
+					</section>
+
+					<section data-markdown>
+						```matlab
+						function middle = bisection(f,a,b)
+						    middle = (a + b) / 2;
+
+						    while abs(f(middle)) > 1e-7
+						        if f(a) * f(middle) < 0
+						            b = middle;
+						        else
+						            a = middle;
+						        end
+						        middle = (a + b) / 2;
+						    end
+						```
+
+						```matlab
+						function middle = bisection(f,a,b)
+						    middle = (a + b) / 2;
+
+						    while abs(f(middle)) > 1e-7
+						        if f(a) * f(middle) < 0 % Mutated : changed > to <
+						            b = middle;
+						        else
+						            a = middle;
+						        end
+						        middle = (a + b) / 2;
+						    end
+						```
+					</section>
+
+					<section data-markdown>
+						#### Conditionals Boundary Mutator
+						| Original conditional | Mutated conditional |
+						|---------------------|---------------------|
+						| <                   | <=                  |
+						| <=                  | <                   |
+						| >                   | >=                  |
+						| >=                  | >                   |
+					</section>
+
+					<section data-markdown>
+						### Disadvatages
+
+						* Automated mutation tests are slow
+						* `odeRK4` generated 424 mutations
+						* False positives
+					</section>
+
+					<section data-markdown>
+						False positive example
+						```matlab
+						function is_zero = is_zero_vector(x)
+						    sum = 0;
+						    for i = 1:length(x)
+						        sum += x(i);
+						    end
+						    is_zero = sum == 0;
+						end
+						```
+						```matlab
+						function is_zero = is_zero_vector(x)
+						    sum = 0;
+						    for i = 1:length(x)
+						        sum -= x(i); % Mutated: changed + to -
+						    end
+						    is_zero = sum == 0;
+						end
+						```
+					</section>
 				</section>
 
 				<section>
