@@ -622,7 +622,7 @@ __________\n\
 						    middle = (a + b) / 2;
 
 						    while abs(f(middle)) > 1e-7
-						        if f(a) * f(middle) < 0 % Mutated : changed > to <
+						        if f(a) * f(middle) > 0 % Mutated : changed > to <
 						            b = middle;
 						        else
 						            a = middle;
@@ -693,7 +693,7 @@ __________\n\
 						- Use one coding style
 						- Write it so someone else can read and run your code the next day
 						- This includes writing documentation (hint: tests can be used as documentaion)
-						
+
 						![Code Quality](img/code_quality.png "Code Quality")
 						###### https://xkcd.com/1513/
 					</section>
@@ -703,7 +703,7 @@ __________\n\
 						- Never manually run experiments
 						- Improves reproducibility
 						- Reduces the need to store results
-						
+
 						![Automation](img/automation.png "Automation")
 						###### https://xkcd.com/1319/
 					</section>
@@ -711,7 +711,7 @@ __________\n\
 					<section data-markdown>
 						## Use libraries
 						- If something already exists, don't write it yourself
-						
+
 						![Python](img/python_half.png "Python")
 						###### http://xkcd.com/353/
 					</section>
